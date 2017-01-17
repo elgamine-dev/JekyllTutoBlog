@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Ma premiére Progressive Web App</title>
+  <meta name="description" content="Une PWA c’est quoi ?">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/jekyll/update/2017/01/10/mapremierepwa.html">
+  <link rel="alternate" type="application/rss+xml" title="Tutoriel" href="http://localhost:4000/feed.xml">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+    <a class="site-title" href="/">Tutoriel</a>
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Ma premiére Progressive Web App</h1>
+    <p class="post-meta"><time datetime="2017-01-10T09:11:00+01:00" itemprop="datePublished">Jan 10, 2017</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h2 id="une-pwa-cest-quoi-">Une PWA c’est quoi ?</h2>
+
+<p>Une Progressive Web App utilise les possibilités du web moderne pour délivrer une expérience utilisateur similaire à une application native. - Google</p>
+
+<p>L’application native peut envoyer des notifications, être ouverte en mode hors ligne, se charger depuis l’écran d’accueil…
+En somme, les PWA contiennent toute une série de technologies, de concepts d’architecture et d’API Web qui travaillent pour proposer une expérience similaire aux applications natives sur le Web mobile.</p>
+
+<h2 id="une-pwa-est-">Une PWA est :</h2>
+
+<ul>
+  <li>
+    <p><strong>Progressive</strong> : Elle doit marcher pour tout les utilisateurs, quelque soit son navigateur.</p>
+  </li>
+  <li>
+    <p><strong>Responsive</strong> : S’adapte à n’importe quel lecteur : mobile, desktop, tablet…</p>
+  </li>
+  <li>
+    <p><strong>Indépendante</strong> : Elle peut marcher avec une connection de base qualité ou même sans.</p>
+  </li>
+  <li>
+    <p><strong>Ressemblante</strong> : Elle doit offrir aux utilisateurs les même intéractions qu’une applications native, et en avoir le style.</p>
+  </li>
+  <li>
+    <p><strong>Fraîche</strong> : Toujours à jour !</p>
+  </li>
+  <li>
+    <p><strong>Fiable</strong> : Servie via HTTPS.</p>
+  </li>
+  <li>
+    <p><strong>Identifiable</strong> : Elle doit être identifié par les moteurs de recherche comme une application.</p>
+  </li>
+  <li>
+    <p><strong>Engageante</strong> : Avec des fonctionnalités ressemblantes à celle des applications native. (hors-ligne, push notifications…).</p>
+  </li>
+  <li>
+    <p><strong>Installable</strong> : Les utilisateurs peuvent la garder sur leurs écran d’accueil sans passer par le app store.</p>
+  </li>
+  <li>
+    <p><strong>Partageable</strong> : Peut être envoyer à d’autres utilisateurs grâce à une URL sans nécéssité d’instalattion.</p>
+  </li>
+</ul>
+
+<h1 id="comment-y-répondre-">Comment y répondre ?</h1>
+
+<p>Nous nous attarderons pas sur les points suivants:
+Progressive, Responsive, Ressemblante, Fiable, Identifiable.
+Ceci pourrais faire l’objet de tout autres tutoriels.</p>
+
+<p><strong>Indépendante/Fraîche</strong> :</p>
+
+<ul>
+  <li>Grâce… au service worker !</li>
+  <li>Oui mais c’est quoi un service worker ?</li>
+  <li>Ah oui bonne question !</li>
+</ul>
+
+<p>Le service worker permet à votre PWA de ce lancer sans aucune connexion internet, il mets en cache vos ressources, les mets à jours si nécessaire et permet d’éliminer les dépendances au réseau. Ceci permet à votre PWA de se charger sans connexion et rapidement !</p>
+
+<p><strong>Engageante/Installable</strong> :</p>
+
+<ul>
+  <li>Avec un joli fichier json… le Manifest.json !</li>
+  <li>Son rôle !?</li>
+  <li>J’y viens !</li>
+</ul>
+
+<p>Le Manifest va permettre de dire au navigateur qu’il s’agit bien d’une PWA, il va vous permettre de lui dire de la lire en fullscreen, de mettre cette icone pour l’écran d’accueil, son thème (couleur) lorsque la PWA se lance…</p>
+
+<ul>
+  <li><em>Manifest</em> : Yop ! Je suis une PWA !</li>
+  <li><em>Navigateur</em> : Ok c’est cool mais je te lis comment ?</li>
+  <li><em>Manifest</em> : En fullscreen, au chargement tu me mets un fond rouge, et n’oublie pas de demander à l’utilisateur s’il veut me mettre en raccourci sur son écran, s’il veut, tu lui mets ce jolie logo sur son écran d’accueil !</li>
+  <li><em>Navigateur</em> : Ok ! Roulez jeunesse !</li>
+</ul>
+
+<h2 id="are-you-ready-">Are you ready ?</h2>
+
+<p><strong>L’environnement de travail</strong> :</p>
+
+<ul>
+  <li>
+    <p>Google Chrome 52 ou une version supérieure, ou <a href="https://chromium.woolyss.com/download/fr/">Chronium</a>.</p>
+  </li>
+  <li>
+    <p><a href="https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk">Lighthouse:</a> ceci va nous permettre de tester notre PWA, tout au long de sa création.</p>
+  </li>
+  <li>
+    <p>Récupérer ceci <a href="https://github.com/jordanlefort/PWA-tuto">PWA tuto</a>.</p>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-zsh" data-lang="zsh">git clone git@github.com:jordanlefort/PWA-tuto.git
+<span class="nb">cd </span>PWA-tuto
+npm install
+node server.js</code></pre></figure>
+
+<p>Normalement, vous pouvez maintenant vous rendre sur <a href="http://localhost:3000">localhost:3000</a>.</p>
+
+<p>Vous devriez avoir ceci :</p>
+
+<p><img src="https://jordanlefort.github.io/PWA-tuto/images/tuto-first-install.png" alt="premiére installation " /></p>
+
+<p>Testons maintenant notre PWA avec Lightouse !</p>
+
+<p><img src="https://jordanlefort.github.io/PWA-tuto/images/first-test-pwa.png" alt="premier test Lightouse " /></p>
+
+<p>Pas de panique ! Notre bout de code n’est à l’heure actuelle aucunement une PWA, nous verrons un peu plus en détails les demandes de Lighthouse plus tard !</p>
+
+<h2 id="le-services-worker-">Le services worker :</h2>
+
+<p>C’est partie maintenant que tout est bien installé, c’est à vous de jouer !</p>
+
+<p>Avant de faire appel au services worker nous allons devoir dire à notre navigateur, enfin s’il est compatible, d’enregistrer notre services worker. Commençons par le commencement.. demandons à notre navigateur s’il prend en charge les services worker ?</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// ./index.html</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="s1">'serviceWorker'</span> <span class="k">in</span> <span class="nx">navigator</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">//Si le navigateur prend en charger le service worker !</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Maintenant on peut lui dire où le trouver, pour qu’il puisse l’enregistrer !</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// ./index.html</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="s1">'serviceWorker'</span> <span class="k">in</span> <span class="nx">navigator</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// J'enregistre mon service worker sw.js</span>
+  <span class="c1">// avec comme scope '/' (racine);</span>
+  <span class="nx">navigator</span><span class="p">.</span><span class="nx">serviceWorker</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="s1">'sw.js'</span><span class="p">,</span> <span class="p">{</span> <span class="na">scope</span><span class="p">:</span> <span class="s1">'/'</span><span class="p">})</span>
+  <span class="c1">// Si c'est good..</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">reg</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Registration succeeded. Scope is'</span> <span class="o">+</span> <span class="nx">reg</span><span class="p">.</span><span class="nx">scope</span><span class="p">);</span>
+  <span class="p">})</span>
+  <span class="c1">// Si c'est bad..</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Registration failed with'</span> <span class="o">+</span> <span class="nx">error</span><span class="p">);</span>      
+  <span class="p">});</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>Vous devriez voir votre service worker dans la devTools !</p>
+
+<p><img src="https://jordanlefort.github.io/PWA-tuto/images/service-worker.png" alt="Service worker on devTools" /></p>
+
+<p>Ok ! Maintenant qu’il l’a enregistré, ce serait bien que notre fichier sw.js fasse quelque chose ! Maintenant lors de la première visite de l’utilisateur sur notre PWA, le service worker va récuperer l’objet cache pour le remplir avec les différents éléments nécessaires au bon fonctionnement de notre PWA.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// ./sw.js</span>
+<span class="kd">var</span> <span class="nx">cacheName</span> <span class="o">=</span> <span class="s1">'pwa'</span><span class="p">;</span> <span class="c1">//le nom de mon cache !</span>
+
+<span class="c1">// J'assigne un écouteur 'install' à mon service worker</span>
+<span class="nx">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'install'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+  <span class="c1">// Cool il est installé !</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'[ServiceWorker] Install'</span><span class="p">);</span>
+  <span class="nx">e</span><span class="p">.</span><span class="nx">waitUntil</span><span class="p">(</span>
+    <span class="c1">// Je récupére mon cache du nom de pwa</span>
+    <span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">cacheName</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">cache</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// Je fais là mise en cache de ma PWA</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'[ServiceWorker] Caching app shell'</span><span class="p">);</span>
+      <span class="k">return</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">addAll</span><span class="p">(</span><span class="nx">filesToCache</span><span class="p">);</span>
+      <span class="c1">// filesToCache : tableaux contenant les différents path vers les fichiers que je veux stocker.</span>
+    <span class="p">})</span>
+  <span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>Bon c’est cool, mais s’il ne stocke rien, ça ne sert à rien ! On va donc stocker tout les fichiers nécessaires au fonctionnement de notre PWA en indiquant les différents path dans notre tableau filesToCache.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// ./sw.js</span>
+
+<span class="kd">var</span> <span class="nx">filesToCache</span> <span class="o">=</span> <span class="p">[</span>
+ <span class="s1">'/'</span><span class="p">,</span>
+ <span class="s1">'index.html'</span><span class="p">,</span>
+ <span class="s1">'css/main.css'</span><span class="p">,</span>
+ <span class="s1">'main.58fec847.js'</span><span class="p">,</span>
+ <span class="s1">'Semantic-UI-CSS-master/semantic.min.css'</span><span class="p">,</span>
+ <span class="s1">'Semantic-UI-CSS-master/themes/default/assets/fonts/icons.eot'</span><span class="p">,</span>
+ <span class="s1">'Semantic-UI-CSS-master/themes/default/assets/fonts/icons.otf'</span><span class="p">,</span>
+ <span class="s1">'Semantic-UI-CSS-master/themes/default/assets/fonts/icons.svg'</span><span class="p">,</span>
+ <span class="s1">'Semantic-UI-CSS-master/themes/default/assets/fonts/icons.ttf'</span><span class="p">,</span>
+ <span class="s1">'Semantic-UI-CSS-master/themes/default/assets/fonts/icons.woff'</span><span class="p">,</span>
+ <span class="s1">'Semantic-UI-CSS-master/themes/default/assets/fonts/icons.woff2'</span>
+<span class="p">]</span></code></pre></figure>
+
+<p>Et on obtient donc ceci ! Je vous invite à vous diriger dans votre cache !</p>
+
+<p><img src="https://jordanlefort.github.io/PWA-tuto/images/cache.png" alt="cache devTools" /></p>
+
+<p>Le service worker peuvent intercepter les demandes faites de notre PWA et les traiter. Cela signifie que nous pouvons déterminer comment nous voulons traiter la requête et potentiellement se servir de notre cache en réponse.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// ./sw.js</span>
+
+<span class="c1">// J'assigne un écouteur 'fetch' à mon service worker</span>
+<span class="nx">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'fetch'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// J'intercepte bien une requéte x ou y.</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'[ServiceWorker] Fetch'</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+  <span class="nx">e</span><span class="p">.</span><span class="nx">respondWith</span><span class="p">(</span>
+    <span class="c1">// Jy réponds soit avec une ressource trouvé dans mon cache (responde) soit en renvoyant la requête</span>
+    <span class="nx">caches</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">request</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">response</span> <span class="o">||</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">request</span><span class="p">);</span>
+    <span class="p">})</span>
+  <span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>Alons voir ce qui ce passe du coté de Ligthouse !</p>
+
+<p><img src="https://jordanlefort.github.io/PWA-tuto/images/ligthouse-second-test.png" alt="Ligthouse with offline" /></p>
+
+<p>Maintenant que Lightouse trouve notre service worker et réussi simuler la page en offline c’est déjà mieux ! Vous pouvez vous diriger vers votre devTools à l’onglet Network pour simuler votre PWA en offline.</p>
+
+<p><img src="https://jordanlefort.github.io/PWA-tuto/images/offline.png" alt="offline simulation" /></p>
+
+<h2 id="le-manifestjson">Le Manifest.json</h2>
+
+<p>Comme expliqué plus tôt le manifest.json permet de dire au navigateur qu’il s’agit d’une PWA, et de lui expliquer comment là lire !</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// ./manifest.json</span>
+<span class="p">{</span>
+  <span class="s2">"name"</span><span class="err">:</span> <span class="s2">"TodoList"</span><span class="p">,</span> <span class="c1">// le nom de votre PWA</span>
+  <span class="s2">"short_name"</span><span class="err">:</span> <span class="s2">"TodoList"</span><span class="p">,</span> <span class="c1">// si le nom de votre PWA est trop long, la navigateur se servira de celui ci.</span>
+  <span class="s2">"icons"</span><span class="err">:</span> <span class="p">[{</span>
+    <span class="s2">"src"</span><span class="p">:</span> <span class="s2">"icon.png"</span><span class="p">,</span>
+      <span class="s2">"sizes"</span><span class="p">:</span> <span class="s2">"128x128"</span><span class="p">,</span>
+      <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"image/png"</span>
+    <span class="p">},</span> <span class="p">{</span>
+      <span class="s2">"src"</span><span class="p">:</span> <span class="s2">"icon.png"</span><span class="p">,</span>
+      <span class="s2">"sizes"</span><span class="p">:</span> <span class="s2">"144x144"</span><span class="p">,</span>
+      <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"image/png"</span>
+    <span class="p">},</span> <span class="p">{</span>
+      <span class="s2">"src"</span><span class="p">:</span> <span class="s2">"icon.png"</span><span class="p">,</span>
+      <span class="s2">"sizes"</span><span class="p">:</span> <span class="s2">"152x152"</span><span class="p">,</span>
+      <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"image/png"</span>
+    <span class="p">},</span> <span class="p">{</span>
+      <span class="s2">"src"</span><span class="p">:</span> <span class="s2">"icon.png"</span><span class="p">,</span>
+      <span class="s2">"sizes"</span><span class="p">:</span> <span class="s2">"192x192"</span><span class="p">,</span>
+      <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"image/png"</span>
+    <span class="p">},</span> <span class="p">{</span>
+      <span class="s2">"src"</span><span class="p">:</span> <span class="s2">"icon.png"</span><span class="p">,</span>
+      <span class="s2">"sizes"</span><span class="p">:</span> <span class="s2">"256x256"</span><span class="p">,</span>
+      <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"image/png"</span>
+    <span class="p">}],</span>  <span class="c1">// les icons (ecrans d'accueil) !</span>
+  <span class="s2">"start_url"</span><span class="err">:</span> <span class="s2">"index.html"</span><span class="p">,</span> <span class="c1">// la page de démarage par default</span>
+  <span class="s2">"display"</span><span class="err">:</span> <span class="s2">"standalone"</span><span class="p">,</span> <span class="c1">// la façon de lire votre PWA</span>
+  <span class="s2">"background_color"</span><span class="err">:</span> <span class="s2">"#21BA45"</span><span class="p">,</span> <span class="c1">// couleur de fond</span>
+  <span class="s2">"theme_color"</span><span class="err">:</span> <span class="s2">"#21BA45"</span> <span class="c1">// couleur du theme</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Maintenant que nous avons crée notre manifest.json nous allons le lier à notre PWA, je vous invite donc à vous rendre sur votre index.html et à rajouter le link juste en dessous dans vos balise head</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- ./index.html --&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"manifest"</span> <span class="na">href=</span><span class="s">"manifest.json"</span><span class="nt">&gt;</span></code></pre></figure>
+
+<p>Cool on y est presque ! Rendez vous dans votre devTools et dans Application, vous devriez retrouver notre manifest !</p>
+
+<p><img src="https://jordanlefort.github.io/PWA-tuto/images/manifest.png" alt="manifest devTools" /></p>
+
+<p>Un petit tour sur Ligthouse voir si il y a du mieux !</p>
+
+<p><img src="https://jordanlefort.github.io/PWA-tuto/images/ligthouse-last-test.png" alt="Lightouse with manifest" /></p>
+
+<h2 id="amélioration-">Amélioration !</h2>
+
+<p>Si vous avez fouinez un petit peu dans Ligthouse, on peut constater que certaines àméliorations sont possibles ! Comme l’ajout de ces méta dans vos balise head :</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- ./index.html --&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"theme-color"</span> <span class="na">content=</span><span class="s">"#21BA45"</span><span class="nt">&gt;</span></code></pre></figure>
+
+<p>Le chargement de vos script de manière asynchrone est également recommandée, de vos fichiers css aussi ! Pour les scripts rien de plus simple, il vous suffit dans vos balise script de rajouter ceci “async”.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- ./index.html --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">'..'</span> <span class="na">async</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></figure>
+
+<p>Pour les fichier css, je vous renvoie vers LoadCSS un script qui sert à charger vos fichier css de manière asynchrone !
+L’intérieur de nos balise head devrais ressembler à ceci :</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- ./index.html --&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"initial-scale=1.0, user-scalable=yes"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"theme-color"</span> <span class="na">content=</span><span class="s">"#21BA45"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>PWA todolist<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"manifest"</span> <span class="na">href=</span><span class="s">"manifest.json"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">async</span><span class="nt">&gt;</span><span class="kd">function</span> <span class="nx">loadCSS</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span><span class="nx">t</span><span class="p">,</span><span class="nx">n</span><span class="p">){</span><span class="s2">"use strict"</span><span class="p">;</span><span class="kd">function</span> <span class="nx">r</span><span class="p">(){</span><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">t</span><span class="p">,</span><span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">d</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="nx">d</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">href</span><span class="o">&amp;&amp;</span><span class="nx">d</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">href</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="o">&gt;-</span><span class="mi">1</span><span class="o">&amp;&amp;</span><span class="p">(</span><span class="nx">t</span><span class="o">=!</span><span class="mi">0</span><span class="p">);</span><span class="nx">t</span><span class="p">?</span><span class="nx">o</span><span class="p">.</span><span class="nx">media</span><span class="o">=</span><span class="nx">n</span><span class="o">||</span><span class="s2">"all"</span><span class="p">:</span><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">r</span><span class="p">)}</span><span class="kd">var</span> <span class="nx">o</span><span class="o">=</span><span class="nb">window</span><span class="p">.</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"link"</span><span class="p">),</span><span class="nx">i</span><span class="o">=</span><span class="nx">t</span><span class="o">||</span><span class="nb">window</span><span class="p">.</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"script"</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span><span class="nx">d</span><span class="o">=</span><span class="nb">window</span><span class="p">.</span><span class="nb">document</span><span class="p">.</span><span class="nx">styleSheets</span><span class="p">;</span><span class="k">return</span> <span class="nx">o</span><span class="p">.</span><span class="nx">rel</span><span class="o">=</span><span class="s2">"stylesheet"</span><span class="p">,</span><span class="nx">o</span><span class="p">.</span><span class="nx">href</span><span class="o">=</span><span class="nx">e</span><span class="p">,</span><span class="nx">o</span><span class="p">.</span><span class="nx">media</span><span class="o">=</span><span class="s2">"only x"</span><span class="p">,</span><span class="nx">i</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">o</span><span class="p">,</span><span class="nx">i</span><span class="p">),</span><span class="nx">r</span><span class="p">(),</span><span class="nx">o</span><span class="p">}</span><span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">async</span><span class="nt">&gt;</span>
+      <span class="nx">loadCSS</span><span class="p">(</span> <span class="s2">"Semantic-UI-CSS-master/semantic.min.css"</span> <span class="p">);</span>
+      <span class="nx">loadCSS</span><span class="p">(</span> <span class="s2">"css/main.css"</span><span class="p">);</span>
+    <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span></code></pre></figure>
+
+<p>Pour plus de détails Lighthouse vous renvoit vers des tutoriels sur les points à corriger vis à vis de votre PWA, si vous voulez tester sur vos téléphone cette PWA (todoList) je vous invite à aller ici : <a href="https://jordanlefort.github.io/pwa-todolist/">todoList</a></p>
+
+<p>Avec ce tutoriel, un peu de travail et un serveur en HTTPS, Lighthouse vous rendra ceci :</p>
+
+<p><img src="https://jordanlefort.github.io/PWA-tuto/images/ligthouse100.png" alt="Ligthouse 100/100" /></p>
+
+<p>Bon courage !</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <a href="mailto:jordan.lefort@laposte.net">jordan.lefort@laposte.net</a>
+      </div>
+
+      <div class="footer-col footer-col-2">
+          
+            <a href="https://github.com/jordanlefort"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">jordanlefort</span></a>
+
+          
+      </div>
+
+      <div class="footer-col footer-col-3">
+        
+
+          <a href="https://twitter.com/Jordan__Lefort"><span class="icon icon--twitter"><svg viewBox="0 0 16 16"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">Jordan__Lefort</span></a>
+
+
+        
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
